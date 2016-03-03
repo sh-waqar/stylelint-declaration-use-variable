@@ -1,0 +1,36 @@
+{
+  "name": "declaration-use-variable",
+  "version": "0.1",
+  "description": "A stylelint custom rule to check the use of scss variable on declaration.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sh-waqar/stylelint-declaration-use-variable.git"
+  },
+  "keywords": [
+    "stylelint",
+    "stylelint-plugin",
+    "css",
+    "variable",
+    "scss",
+    "z-index",
+    "color"
+  ],
+  "author": "Waqar Ali",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sh-waqar/stylelint-declaration-use-variable/issues"
+  },
+  "homepage": "https://github.com/sh-waqar/stylelint-declaration-use-variable",
+  "devDependencies": {
+    "tape": "^4.2.2"
+  },
+  "dependencies": {
+    "object-assign": "^4.0.1",
+    "stylelint": ">=3.0.2",
+    "stylelint-rule-tester": "^0.6.1"
+  }
+}
