@@ -1,5 +1,5 @@
 {
-  "name": "declaration-use-variable",
+  "name": "stylelint-declaration-use-variable",
   "version": "0.1",
   "description": "A stylelint custom rule to check the use of scss variable on declaration.",
   "main": "index.js",
