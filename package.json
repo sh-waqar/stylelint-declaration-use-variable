@@ -1,41 +1,36 @@
 {
-  "name": "stylelint-selector-bem-pattern",
-  "version": "0.2.1",
-  "description": "A stylelint plugin that harnesses the power of postcss-bem-linter",
+  "name": "stylelint-declaration-use-variable",
+  "version": "1.0.0",
+  "description": "A stylelint custom rule to check the use of scss variable on declaration.",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
-    "test": "node test"
+    "test": "tape test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidtheclark/stylelint-selector-bem-pattern.git"
+    "url": "git+https://github.com/sh-waqar/stylelint-declaration-use-variable.git"
   },
-  "files": [
-    "index.js"
-  ],
   "keywords": [
     "stylelint",
     "stylelint-plugin",
     "css",
-    "nesting",
-    "linter",
-    "bem"
+    "variable",
+    "scss",
+    "z-index",
+    "color"
   ],
-  "author": "David Clark",
+  "author": "sh-waqar <waqar.ali911@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/davidtheclark/stylelint-selector-bem-pattern/issues"
+    "url": "https://github.com/sh-waqar/stylelint-declaration-use-variable/issues"
   },
-  "homepage": "https://github.com/davidtheclark/stylelint-selector-bem-pattern#readme",
-  "dependencies": {
-    "lodash": ">=3.10.0",
-    "postcss-bem-linter": "^2.1.0",
-    "stylelint": ">=3.0.2"
-  },
+  "homepage": "https://github.com/sh-waqar/stylelint-declaration-use-variable",
   "devDependencies": {
-    "eslint": "^1.10.3",
-    "postcss": "^5.0.10",
+    "tape": "^4.2.2"
+  },
+  "dependencies": {
+    "object-assign": "^4.0.1",
+    "stylelint": ">=3.0.2",
     "stylelint-rule-tester": "^0.6.1"
   }
 }

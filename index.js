@@ -1,64 +1,43 @@
-var _ = require('lodash');
-var Result = require('postcss/lib/result');
+var assign = require('object-assign');
 var stylelint = require('stylelint');
-var bemLinter = require('postcss-bem-linter');
 
-var ruleName = 'selector-bem-pattern';
+var ruleName = 'declaration-use-variable';
 
-var optionsSchema = {
-  preset: ['suit', 'bem'],
-  presetOptions: function() { return true; }, // Can't currently validated `presetOptions`
-  componentName: [isStringOrRegExp],
-  componentSelectors: [function(pattern) {
-    if (isStringOrFunction(pattern)) return true;
-    if (!pattern.initial) return false;
-    if (!isStringOrFunction(pattern.initial)) return false;
-    if (pattern.combined && !isStringOrFunction(pattern.combined)) return false;
-    return true;
-  }],
-  utilitySelectors: [isStringOrRegExp],
-  ignoreSelectors: [
-    isStringOrRegExp,
-    function(pattern) {
-      if (!_.isArray(pattern)) {
-        return isStringOrRegExp(pattern);
-      }
-      return _.every(pattern, isStringOrRegExp);
-    },
-  ],
-};
-
-module.exports = stylelint.createPlugin(ruleName, function(options) {
-  options = options || { preset: 'suit' };
-
-  return function(root, result) {
-    var validOptions = stylelint.utils.validateOptions(result, ruleName, {
-      actual: options,
-      possible: optionsSchema,
-    });
-    if (!validOptions) return;
-
-    var bemLinterResult = new Result();
-    bemLinter(options)(root, bemLinterResult)
-    var bemLinterWarnings = bemLinterResult.warnings();
-
-    bemLinterWarnings.forEach(function(warning) {
-      stylelint.utils.report({
-        ruleName: ruleName,
-        result: result,
-        node: warning.node,
-        line: warning.line,
-        column: warning.column,
-        message: warning.text + ' (selector-bem-pattern)',
-      });
-    });
-  };
+var messages = stylelint.utils.ruleMessages(ruleName, {
+    rejected: 'Use scss variable for z-index.',
 });
 
-function isStringOrRegExp(x) {
-  return _.isString(x) || _.isRegExp(x);
+function checkCond(decl, opt) {
+    var regEx = /^(\$)|(map-get)/g;
+    return decl.prop === opt && regEx.exec(decl.value) === null;
 }
 
-function isStringOrFunction(x) {
-  return _.isString(x) || _.isFunction(x);
-}
+module.exports = stylelint.createPlugin(ruleName, function(options) {
+    options = options || '';
+
+    return function(root, result) {
+        var validOptions = stylelint.utils.validateOptions({
+            ruleName: ruleName,
+            result: result,
+            actual: options,
+        });
+
+        if (!validOptions) {
+            return;
+        }
+        
+        root.walkDecls(function(statement) {
+            if (checkCond(statement.prop, options)) {
+                stylelint.utils.report({
+                    ruleName: ruleName,
+                    result: result,
+                    node: statement,
+                    message: messages.rejected
+                });
+            }
+        });
+    };
+});
+
+module.exports.ruleName = ruleName;
+module.exports.messages = messages;
