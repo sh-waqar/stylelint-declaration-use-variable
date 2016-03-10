@@ -8,8 +8,11 @@ var messages = stylelint.utils.ruleMessages(ruleName, {
 });
 
 function checkCond(decl, opt) {
+    // Regex for checking 
+    // scss variable starting with '$'
+    // map-get function in scss
     var regEx = /^(\$)|(map-get)/g;
-    return decl.prop === opt && regEx.exec(decl.value) === null;
+    return decl.prop === opt && !regEx.test(decl.value);
 }
 
 module.exports = stylelint.createPlugin(ruleName, function(options) {
@@ -25,9 +28,9 @@ module.exports = stylelint.createPlugin(ruleName, function(options) {
         if (!validOptions) {
             return;
         }
-        
+
         root.walkDecls(function(statement) {
-            if (checkCond(statement.prop, options)) {
+            if (checkCond(statement, options)) {
                 stylelint.utils.report({
                     ruleName: ruleName,
                     result: result,
