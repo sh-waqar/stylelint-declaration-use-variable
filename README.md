@@ -1,3 +1,69 @@
 # stylelint-declaration-use-variable
 
-A stylelint custom rule to check the use of scss variable on declaration.
+[![Build Status](https://travis-ci.org/sh-waqar/stylelint-declaration-use-variable.svg?branch=master)](https://travis-ci.org/sh-waqar/stylelint-declaration-use-variable)
+
+A [stylelint](https://github.com/stylelint/stylelint) plugin that check the use of scss variable on declaration. Either used with '$' or map-get().
+
+## Installation
+
+```
+npm install stylelint-declaration-use-variable
+```
+
+Be warned: v0.2.0+ is only compatible with stylelint v3+. For earlier version of stylelint, use earlier versions of this.
+
+## Details
+
+Preprocessers like Sass/Scss uses variables to make the code clean, maintainable and reusable. But since developers are lazy they might get a chance to miss the use of variables in sass code and that kinda sucks.
+
+```css
+$some-cool-color: #efefef;
+
+.foo {
+    display: inline-block;
+    text-align: center;
+    color: #efefef; // Wait a min! there is a variable for that.
+}
+```
+
+### Supported scss variables
+
+Scss variables using '$' notation and map-get are supported
+```css
+// Simple variables
+$some-cool-color: #efefef;
+$some-integer: 123;
+$some-pixels: 4px;
+
+color: $some-cool-color;
+
+// Using map-get
+$cool-colors: (
+    blue: #3ea1ec,
+    red: #eb5745,
+);
+
+color: map-get($cool-colors, blue);
+
+```
+
+## Usage
+
+Add it to your stylelint config `plugins` array, then add `"declaration-use-variable"` to your rules,
+specifying the property for which you want to check the usage of scss variable.
+
+Like so:
+
+```js
+// .stylelintrc
+{
+  "plugins": [
+    "stylelint-declaration-use-variable"
+  ],
+  "rules": {
+    // ...
+    "declaration-use-variable": "color",
+    // ...
+  }
+}
+```
