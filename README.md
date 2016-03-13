@@ -16,7 +16,7 @@ Be warned: v0.2.0+ is only compatible with stylelint v3+. For earlier version of
 
 Preprocessers like Sass/Scss uses variables to make the code clean, maintainable and reusable. But since developers are lazy they might get a chance to miss the use of variables in sass code and that kinda sucks.
 
-```css
+```scss
 $some-cool-color: #efefef;
 
 .foo {
@@ -29,7 +29,7 @@ $some-cool-color: #efefef;
 ### Supported scss variables
 
 Scss variables using '$' notation and map-get are supported
-```css
+```scss
 // Simple variables
 $some-cool-color: #efefef;
 $some-integer: 123;
