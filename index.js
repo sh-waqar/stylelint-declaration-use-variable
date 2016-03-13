@@ -4,7 +4,9 @@ var stylelint = require('stylelint');
 var ruleName = 'declaration-use-variable';
 
 var messages = stylelint.utils.ruleMessages(ruleName, {
-    rejected: 'Use scss variable for z-index.',
+    expected: function expected(h) {
+        return 'Expected scss variable for \"' + h + '\".';
+    }
 });
 
 function checkCond(decl, opt) {
@@ -35,7 +37,7 @@ module.exports = stylelint.createPlugin(ruleName, function(options) {
                     ruleName: ruleName,
                     result: result,
                     node: statement,
-                    message: messages.rejected
+                    message: messages.expected(statement.prop)
                 });
             }
         });
