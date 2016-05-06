@@ -5,11 +5,12 @@ var messages = declarationUseVariable.messages;
 var testRule = ruleTester(declarationUseVariable.rule, declarationUseVariable.ruleName);
 
 // Test for excluding non-matching properties
-testRule('background-color', function(tr) {
-    tr.ok('.foo { color: #000; }');
+testRule('/color/', function(tr) {
+    tr.ok('.foo { color: $blue; }');
     tr.ok('.foo { z-index: 22; }');
-    tr.ok('.manage-link {\npadding: 0;\ntext-align: center;\nbackground-color: $abc;\nz-index: $foo;\na {\ncolor: $abc;\n&:hover {\ncolor: #ccc;\n}\n}\n}');
+    tr.ok('.manage-link {\npadding: 0;\ntext-align: center;\nbackground-color: $abc;\nz-index: $foo;\na {\ncolor: $abc;\n&:hover {\ncolor: $red;\n}\n}\n}');
     tr.notOk('.foo { background-color: #fff; }', messages.expected('background-color'));
+    tr.notOk('.foo { color: #fff; }', messages.expected('color'));
 });
 
 // Test for z-index variables
@@ -19,9 +20,12 @@ testRule('z-index', function(tr) {
     tr.notOk('.foo { z-index: 22; }', messages.expected('z-index'));
 });
 
-// Test for color variables
-testRule('color', function(tr) {
+// Test for multiple values in array including regex
+testRule(['/color/', 'font-size', 'z-index'], function(tr) {
     tr.ok('.foo { color: $blue; }');
+    tr.ok('.foo { z-index: $foo; }');
     tr.ok('.foo { color: map-get($map, $val); }');
+    tr.ok('.foo { background-color: map-get($map, $val); }');
     tr.notOk('.foo { color: blue; }', messages.expected('color'));
+    tr.notOk('.foo { z-index: 11; }', messages.expected('z-index'));
 });

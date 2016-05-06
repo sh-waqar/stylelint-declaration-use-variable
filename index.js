@@ -9,12 +9,57 @@ var messages = stylelint.utils.ruleMessages(ruleName, {
     }
 });
 
-function checkCond(decl, opt) {
+/**
+ * Compares the declaration with regex pattern
+ * to verify the usage of scss variable
+ * 
+ * @param  {string} val
+ * @return {bool}
+ */
+function checkValue(val) {
     // Regex for checking 
     // scss variable starting with '$'
     // map-get function in scss
     var regEx = /^(\$)|(map-get)/g;
-    return decl.prop === opt && !regEx.test(decl.value);
+
+    return regEx.test(val);
+}
+
+/**
+ * Checks the defined property in (css|scss) with the
+ * test string or regex defined in stylelint config
+ * 
+ * @param  {string} value
+ * @param  {string|regex} comparison
+ * @return {bool}
+ */
+function testAgaintString(value, comparison) {
+    var comparisonIsRegex = comparison[0] === "/" && comparison[comparison.length - 1] === "/";
+
+    if (comparisonIsRegex) {
+        var valueMatches = new RegExp(comparison.slice(1, -1)).test(value);
+        return valueMatches;
+    }
+
+    return value == comparison;
+}
+
+/**
+ * Checks the test expression with css declaration
+ * 
+ * @param  {string} value
+ * @param  {string|array} comparison
+ * @return {bool}
+ */
+function checkProp(value, comparison) {
+    if (Array.isArray(comparison)) {
+        for (var input of comparison) {
+            if (testAgaintString(value, input)) return true;
+        }
+        return false;
+    } else {
+        return testAgaintString(value, comparison);
+    }
 }
 
 module.exports = stylelint.createPlugin(ruleName, function(options) {
@@ -32,7 +77,7 @@ module.exports = stylelint.createPlugin(ruleName, function(options) {
         }
 
         root.walkDecls(function(statement) {
-            if (checkCond(statement, options)) {
+            if (checkProp(statement.prop, options) && !checkValue(statement.value)) {
                 stylelint.utils.report({
                     ruleName: ruleName,
                     result: result,
