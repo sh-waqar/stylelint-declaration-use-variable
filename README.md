@@ -67,3 +67,29 @@ Like so:
   }
 }
 ```
+
+#### Multiple properties
+
+Multiple properties can be watched by passing them inside array. Regex can also be used inside arrays.
+
+```js
+// .stylelintrc
+"rules": {
+  // ...
+  "declaration-use-variable": ["/color/", "z-index", "font-size"],
+  // ...
+}
+```
+
+#### Regex support
+
+Passing a regex will watch the variable usage for all matching properties.
+
+```js
+// .stylelintrc
+"rules": {
+  // ...
+  "declaration-use-variable": "/color/",
+  // ...
+}
+```
