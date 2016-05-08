@@ -5,13 +5,13 @@ var ruleName = 'declaration-use-variable';
 
 var messages = stylelint.utils.ruleMessages(ruleName, {
     expected: function expected(h) {
-        return 'Expected scss variable for \"' + h + '\".';
+        return 'Expected variable for \"' + h + '\".';
     }
 });
 
 /**
  * Compares the declaration with regex pattern
- * to verify the usage of scss variable
+ * to verify the usage of variable
  * 
  * @param  {string} val
  * @return {bool}
@@ -20,13 +20,15 @@ function checkValue(val) {
     // Regex for checking 
     // scss variable starting with '$'
     // map-get function in scss
-    var regEx = /^(\$)|(map-get)/g;
+    // less variable starting with '@'
+    // custom properties starting with '--' or 'var'
+    var regEx = /^(\$)|(map-get)|(\@)|(--)|(var)/g;
 
     return regEx.test(val);
 }
 
 /**
- * Checks the defined property in (css|scss) with the
+ * Checks the defined property in (css|scss|less) with the
  * test string or regex defined in stylelint config
  * 
  * @param  {string} value
