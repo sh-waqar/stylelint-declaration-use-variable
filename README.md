@@ -83,13 +83,13 @@ Multiple properties can be watched by passing them inside array. Regex can also 
 
 #### Regex support
 
-Passing a regex will watch the variable usage for all matching properties.
+Passing a regex will watch the variable usage for all matching properties. This rule will match all CSS properties while ignoring Sass and Less variables.
 
 ```js
 // .stylelintrc
 "rules": {
   // ...
-  "declaration-use-variable": "/color/",
+  "declaration-use-variable": "/(^[^@$].*(color).*|^color)/",
   // ...
 }
 ```
