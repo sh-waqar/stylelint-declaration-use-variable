@@ -62,7 +62,7 @@ Like so:
   ],
   "rules": {
     // ...
-    "declaration-use-variable": "color",
+    "sh-waqar/declaration-use-variable": "color",
     // ...
   }
 }
@@ -76,7 +76,7 @@ Multiple properties can be watched by passing them inside array. Regex can also 
 // .stylelintrc
 "rules": {
   // ...
-  "declaration-use-variable": ["/color/", "z-index", "font-size"],
+  "sh-waqar/declaration-use-variable": ["/color/", "z-index", "font-size"],
   // ...
 }
 ```
@@ -89,7 +89,7 @@ Passing a regex will watch the variable usage for all matching properties. This 
 // .stylelintrc
 "rules": {
   // ...
-  "declaration-use-variable": "/(^[^@$].*(color).*|^color)/",
+  "sh-waqar/declaration-use-variable": "/(^[^@$].*(color).*|^color)/",
   // ...
 }
 ```

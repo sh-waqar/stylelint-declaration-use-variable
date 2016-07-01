@@ -1,7 +1,7 @@
 var assign = require('object-assign');
 var stylelint = require('stylelint');
 
-var ruleName = 'declaration-use-variable';
+var ruleName = 'sh-waqar/declaration-use-variable';
 
 var messages = stylelint.utils.ruleMessages(ruleName, {
     expected: function expected(h) {
