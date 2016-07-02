@@ -1,4 +1,3 @@
-var assign = require('object-assign');
 var stylelint = require('stylelint');
 
 var ruleName = 'sh-waqar/declaration-use-variable';

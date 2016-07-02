@@ -1,6 +1,6 @@
 {
   "name": "stylelint-declaration-use-variable",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A stylelint custom rule to check the use of scss variable on declaration.",
   "main": "index.js",
   "scripts": {
@@ -29,8 +29,7 @@
     "tape": "^4.2.2"
   },
   "dependencies": {
-    "object-assign": "^4.0.1",
-    "stylelint": ">=3.0.2",
-    "stylelint-rule-tester": "^0.6.1"
+    "stylelint": "^6.8.0",
+    "stylelint-rule-tester": "^0.6.2"
   }
 }
