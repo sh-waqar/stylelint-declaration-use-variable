@@ -89,7 +89,7 @@ Passing a regex will watch the variable usage for all matching properties. This 
 // .stylelintrc
 "rules": {
   // ...
-  "sh-waqar/declaration-use-variable": "/(^[^@$].*(color).*|^color)/",
+  "sh-waqar/declaration-use-variable": "/color/",
   // ...
 }
 ```

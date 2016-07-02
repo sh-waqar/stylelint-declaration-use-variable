@@ -38,6 +38,11 @@ function checkValue(val) {
 function testAgaintString(value, comparison) {
     var comparisonIsRegex = comparison[0] === "/" && comparison[comparison.length - 1] === "/";
 
+    // if value is a variable do not run check
+    // and return, since it would be a variable declaration
+    // not a style property declaration
+    if (checkValue(value)) return;
+
     if (comparisonIsRegex) {
         var valueMatches = new RegExp(comparison.slice(1, -1)).test(value);
         return valueMatches;
