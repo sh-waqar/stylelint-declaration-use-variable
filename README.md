@@ -76,7 +76,7 @@ Multiple properties can be watched by passing them inside array. Regex can also 
 // .stylelintrc
 "rules": {
   // ...
-  "sh-waqar/declaration-use-variable": ["/color/", "z-index", "font-size"],
+  "sh-waqar/declaration-use-variable": [["/color/", "z-index", "font-size"]],
   // ...
 }
 ```
