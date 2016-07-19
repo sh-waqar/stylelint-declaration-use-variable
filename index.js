@@ -21,9 +21,12 @@ function checkValue(val) {
     // map-get function in scss
     // less variable starting with '@'
     // custom properties starting with '--' or 'var'
-    // color functions starting with 'color'
-    var regEx = /^(\$)|(map-get)|(\@)|(--)|(var)|(color)/g;
+    var regEx = /^(\$)|(map-get)|(\@)|(--)|(var)/g;
 
+    // color functions starting with 'color('
+    if (val.indexOf('color(') > -1) {
+      return true;
+    }
     return regEx.test(val);
 }
 
