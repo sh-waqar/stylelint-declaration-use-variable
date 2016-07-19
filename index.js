@@ -11,17 +11,18 @@ var messages = stylelint.utils.ruleMessages(ruleName, {
 /**
  * Compares the declaration with regex pattern
  * to verify the usage of variable
- * 
+ *
  * @param  {string} val
  * @return {bool}
  */
 function checkValue(val) {
-    // Regex for checking 
+    // Regex for checking
     // scss variable starting with '$'
     // map-get function in scss
     // less variable starting with '@'
     // custom properties starting with '--' or 'var'
-    var regEx = /^(\$)|(map-get)|(\@)|(--)|(var)/g;
+    // color functions starting with 'color'
+    var regEx = /^(\$)|(map-get)|(\@)|(--)|(var)|(color)/g;
 
     return regEx.test(val);
 }
@@ -29,7 +30,7 @@ function checkValue(val) {
 /**
  * Checks the defined property in (css|scss|less) with the
  * test string or regex defined in stylelint config
- * 
+ *
  * @param  {string} value
  * @param  {string|regex} comparison
  * @return {bool}
@@ -52,7 +53,7 @@ function testAgaintString(value, comparison) {
 
 /**
  * Checks the test expression with css declaration
- * 
+ *
  * @param  {string} value
  * @param  {string|array} comparison
  * @return {bool}
