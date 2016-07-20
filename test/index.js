@@ -30,11 +30,12 @@ testRule(['/color/', 'font-size', 'z-index'], function(tr) {
     tr.notOk('.foo { z-index: 11; }', messages.expected('z-index'));
 });
 
-// Test for less and custom properties
+// Test for less, custom properties and color functions
 testRule(['/color/', 'font-size', 'z-index'], function(tr) {
     tr.ok('.foo { color: @blue; }');
     tr.ok('.foo { z-index: --foo; }');
     tr.ok('.foo { color: var(--var-name); }');
+    tr.ok('.foo { color: color($blue shade(10%)); }');
     tr.notOk('.foo { color: blue; }', messages.expected('color'));
     tr.notOk('.foo { z-index: 11; }', messages.expected('z-index'));
 });
