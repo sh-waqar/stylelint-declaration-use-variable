@@ -53,20 +53,24 @@ If you plan to level-up the usage of your variables by the usage of fancy [color
 
 Instead of a direct variable usage like this:
 ```scss
+$white: #fff;
+
 .foo {
-  color: $smokeyWhite;
+  color: $white;
 }
 ```
 
 You could also do things like:
 ```scss
 .foo {
-  color: color($smokeyWhite shade(10%));
+  color: color($white shade(10%));
 }
 ```
 
 This will still be seen as a valid code by the plugin. As a side-note, it doesn't matter what kind of variable-syntax
 you are using in the color function itself - if the line starts with `color(` then it is seen as valid.
+
+> If you contribute and wonder about the check for `color(` - it couldn't be done via regex because not only values will be passed to the plugin, but also property names. For some reason, the plugin just dies if you start extending the regex to look for "color". So it must be done via extra-if-check.
 
 ## Usage
 
