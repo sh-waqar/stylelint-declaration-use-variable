@@ -9,8 +9,8 @@ testRule('/color/', function(tr) {
     tr.ok('.foo { color: $blue; }');
     tr.ok('.foo { z-index: 22; }');
     tr.ok('$color-white: #fff; \n.manage-link {\npadding: 0;\ntext-align: center;\nbackground-color: $abc;\nz-index: $foo;\na {\ncolor: $abc;\n&:hover {\ncolor: $red;\n}\n}\n}');
-    tr.notOk('.foo { background-color: #fff; }', messages.expected('background-color'));
-    tr.notOk('.foo { color: #fff; }', messages.expected('color'));
+    tr.notOk('.foo { background-color: #fff; }', messages.expectedPresent('background-color', '$color-white'));
+    tr.notOk('.foo { color: #fcfcf; }', messages.expected('color'));
 });
 
 // Test for z-index variables
