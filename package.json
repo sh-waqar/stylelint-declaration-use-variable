@@ -26,10 +26,10 @@
   },
   "homepage": "https://github.com/sh-waqar/stylelint-declaration-use-variable",
   "devDependencies": {
+    "stylelint-test-rule-tape": "^0.2.0",
     "tape": "^4.2.2"
   },
   "dependencies": {
-    "stylelint": "^6.8.0",
-    "stylelint-rule-tester": "^0.6.2"
+    "stylelint": "^6.8.0"
   }
 }
