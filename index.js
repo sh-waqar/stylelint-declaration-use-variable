@@ -49,11 +49,6 @@ function checkValue(val, exceptions = []) {
     // custom properties starting with '--' or 'var'
     var regEx = /^(\$)|(map-get)|(\@)|(--)|(var)/g;
 
-    // color functions starting with 'color('
-    if (val.indexOf('color(') > -1) {
-      return true;
-    }
-
     for (var exception of exceptions) {
         if (isStringRegex(exception)) {
             if (toRegex(exception).test(val)) return true;
@@ -123,14 +118,14 @@ function checkProp(prop, value, targets) {
  * @return {object}
  */
 function parseOptions(options) {
-    var parsed = { targets: [], ignoreValues: [] };
+    var parsed = { targets: [], ignoreValues: ['/color\\(/'] };
 
     if (Array.isArray(options)) {
         var last = options[options.length - 1];
         if (typeof last === 'object') {
             parsed.targets = options.slice(0, options.length - 1);
             if (last.ignoreValues) {
-                parsed.ignoreValues = last.ignoreValues;
+                parsed.ignoreValues = parsed.ignoreValues.concat(last.ignoreValues);
             }
         } else {
             parsed.targets = options;
