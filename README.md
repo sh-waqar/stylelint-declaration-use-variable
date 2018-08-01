@@ -59,6 +59,19 @@ Passing a regex will watch the variable usage for all matching properties. This 
 }
 ```
 
+#### Options
+
+Passing `ignoreValues' option, you can accpet values which are exact same string or matched by Regex
+
+```js
+// .stylelintrc
+"rules": {
+  // ...
+  "sh-waqar/declaration-use-variable": [["/color/", font-size", { ignoreValues: ["transparent", "inherit", "/regexForspecialFunc/"] }]],
+  // ...
+}
+```
+
 ## Details
 
 Preprocessers like scss, less uses variables to make the code clean, maintainable and reusable. But since developers are lazy they might get a chance to miss the use of variables in styling code and that kinda sucks.
