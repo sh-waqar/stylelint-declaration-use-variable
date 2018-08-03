@@ -67,7 +67,7 @@ Passing `ignoreValues` option, you can accpet values which are exact same string
 // .stylelintrc
 "rules": {
   // ...
-  "sh-waqar/declaration-use-variable": [["/color/", font-size", { ignoreValues: ["transparent", "inherit", "/regexForspecialFunc/"] }]],
+  "sh-waqar/declaration-use-variable": [["/color/", "font-size", { ignoreValues: ["transparent", "inherit", "/regexForspecialFunc/"] }]],
   // ...
 }
 ```
