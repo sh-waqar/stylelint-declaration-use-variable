@@ -30,6 +30,6 @@
     "tape": "^4.11.0"
   },
   "dependencies": {
-    "stylelint": "11.1.1"
+    "stylelint": "^13.13.1"
   }
 }
