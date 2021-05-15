@@ -29,7 +29,10 @@
     "stylelint-test-rule-tape": "^0.2.0",
     "tape": "^4.11.0"
   },
-  "dependencies": {
-    "stylelint": "11.1.1"
+  "devDependencies": {
+    "stylelint": "^13.13.0"
+  },
+  "peerDependencies": {
+    "stylelint": "^13.13.0"
   }
 }
