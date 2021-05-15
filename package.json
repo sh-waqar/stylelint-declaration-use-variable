@@ -1,6 +1,6 @@
 {
   "name": "stylelint-declaration-use-variable",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "A stylelint custom rule to check the use of scss variable on declaration.",
   "main": "index.js",
   "scripts": {
@@ -27,9 +27,7 @@
   "homepage": "https://github.com/sh-waqar/stylelint-declaration-use-variable",
   "devDependencies": {
     "stylelint-test-rule-tape": "^0.2.0",
-    "tape": "^4.11.0"
-  },
-  "devDependencies": {
+    "tape": "^4.11.0",
     "stylelint": "^13.13.0"
   },
   "peerDependencies": {
