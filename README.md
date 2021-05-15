@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/sh-waqar/stylelint-declaration-use-variable.svg?branch=master)](https://travis-ci.org/sh-waqar/stylelint-declaration-use-variable)
 
+**:warning: This project is not actively maintained. Please use [stylelint-declaration-strict-value](https://github.com/AndyOGo/stylelint-declaration-strict-value) :warning:**
+
 A [stylelint](https://github.com/stylelint/stylelint) plugin that check the use of scss, less or custom css variable on declaration. Either used with '$', map-get(), '@' or 'var(--var-name)'.
 
 ## Installation
